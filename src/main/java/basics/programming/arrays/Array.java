@@ -87,6 +87,29 @@ public class Array<T> {
         return intersectionArray;
     }
 
+    public void reverse() {
+        T temp;
+        for (int i = 0; i < this.reelSize / 2; i++) {
+            temp = this.array[i];
+            this.array[i] = this.array[this.reelSize - i - 1];
+            this.array[this.reelSize - i - 1] = temp;
+        }
+    }
+
+    public void insertAt(T item, int index) {
+        if (index < 0 || index >= this.reelSize) {
+            throw new IllegalArgumentException("The index should be greater than 0 and less then " + this.reelSize);
+        }
+        if (this.reelSize >= this.size) {
+            this.array = this.growArray(this.array);
+        }
+        for (int i = this.reelSize; i >= index; i--) {
+            this.array[i + 1] = this.array[i];
+        }
+        this.array[index] = item;
+        this.reelSize++;
+    }
+
     @Override
     public String toString() {
         StringBuilder arrayInText = new StringBuilder("[ ");

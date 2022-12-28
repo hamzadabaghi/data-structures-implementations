@@ -1,5 +1,11 @@
 package basics.programming.arrays;
 
+/**
+ * Custom Array Class.
+ * @author hamzadabaghi.
+ * Default size : 10.
+ * Growth factor  : x 2.
+ */
 public class Array {
     private int size;
 
@@ -7,8 +13,8 @@ public class Array {
     private int[] array;
 
     public Array() {
-        this.size = 1;
-        this.array = new int[1];
+        this.size = 10;
+        this.array = new int[10];
     }
     public Array(int size) {
         this.size = size;
@@ -36,11 +42,19 @@ public class Array {
     }
 
     public void removeAt(int index) {
-
+        for(int i = index; i < this.reelSize - 1 ; i++) {
+            this.array[i] = this.array[i+1];
+        }
+        this.reelSize--;
     }
 
     public int indexOf(int value) {
-        return 0;
+        for(int i=0; i< this.reelSize; i++) {
+            if(this.array[i] == value){
+                return i;
+            }
+        }
+        return -1;
     }
 
     @Override

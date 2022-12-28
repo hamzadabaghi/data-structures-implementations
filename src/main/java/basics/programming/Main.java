@@ -10,8 +10,9 @@ public class Main {
         array.insert(10);
         array.insert(15);
         array.insert(20);
-        array.removeAt(0);
-        System.out.println(array);
+        array.insert(17);
+        array.removeAt(1);
+        System.out.println(array.indexOf(20));
 
     }
 

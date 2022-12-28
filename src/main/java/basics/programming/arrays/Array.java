@@ -6,36 +6,38 @@ package basics.programming.arrays;
  * Default size : 10.
  * Growth factor  : x 2.
  */
-public class Array {
+public class Array<T> {
     private int size;
 
     private int reelSize;
-    private int[] array;
+    private T[] array;
 
+    @SuppressWarnings("unchecked")
     public Array() {
         this.size = 10;
-        this.array = new int[10];
+        this.array = (T[]) new Object[10];
     }
 
+    @SuppressWarnings("unchecked")
     public Array(int size) {
         this.size = size;
-        this.array = new int[size];
+        this.array =  (T[]) new Object[size];
     }
 
     public int size() {
         return this.reelSize;
     }
 
-    public void insert(int value) {
+    public void insert(T value) {
         if (this.reelSize == this.size) {
             this.array = this.growArray(this.array);
         }
         this.array[reelSize++] = value;
     }
 
-    @SuppressWarnings("ManualArrayCopy")
-    private int[] growArray(int[] array) {
-        int[] newArray = new int[this.size * 2];
+    @SuppressWarnings({"ManualArrayCopy","unchecked"})
+    private T[] growArray(T[] array) {
+        T[] newArray =  (T[]) new Object[this.size * 2];
         for (int i = 0; i < this.size; i++) {
             newArray[i] = array[i];
         }
@@ -53,7 +55,7 @@ public class Array {
         this.reelSize--;
     }
 
-    public int indexOf(int value) {
+    public int indexOf(T value) {
         for (int i = 0; i < this.reelSize; i++) {
             if (this.array[i] == value) {
                 return i;

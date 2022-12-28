@@ -6,14 +6,14 @@ public class Main {
     public static void main(String[] args) {
 
         /*--------------- Arrays ---------------*/
-        Array array = new Array();
-        array.insert(10);
-        array.insert(15);
-        array.insert(20);
-        array.insert(17);
+        Array<Double> array = new Array<Double>();
+        array.insert(10.0);
+        array.insert(15.0);
+        array.insert(20.0);
+        array.insert(17.0);
         array.removeAt(1);
+        System.out.println(array);
         System.out.println(array.size());
-        System.out.println(array.indexOf(17));
 
     }
 

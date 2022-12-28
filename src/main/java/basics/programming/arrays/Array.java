@@ -2,6 +2,7 @@ package basics.programming.arrays;
 
 /**
  * Custom Array Class.
+ *
  * @author hamzadabaghi.
  * Default size : 10.
  * Growth factor  : x 2.
@@ -21,7 +22,7 @@ public class Array<T> {
     @SuppressWarnings("unchecked")
     public Array(int size) {
         this.size = size;
-        this.array =  (T[]) new Object[size];
+        this.array = (T[]) new Object[size];
     }
 
     public int size() {
@@ -35,9 +36,9 @@ public class Array<T> {
         this.array[reelSize++] = value;
     }
 
-    @SuppressWarnings({"ManualArrayCopy","unchecked"})
+    @SuppressWarnings({"ManualArrayCopy", "unchecked"})
     private T[] growArray(T[] array) {
-        T[] newArray =  (T[]) new Object[this.size * 2];
+        T[] newArray = (T[]) new Object[this.size * 2];
         for (int i = 0; i < this.size; i++) {
             newArray[i] = array[i];
         }
@@ -62,6 +63,28 @@ public class Array<T> {
             }
         }
         return -1;
+    }
+
+    /* support only integers */
+    @SuppressWarnings("ConstantValue")
+    public int max() {
+        int max = (int) this.array[0];
+        for (int i = 1; i < this.reelSize; i++) {
+            if ((int) this.array[i] > max) {
+                max = (int) this.array[i];
+            }
+        }
+        return max;
+    }
+
+    public Array<T> intersect(T[] secondArray, int length) {
+        Array<T> intersectionArray = new Array<T>(length);
+        for (int i = 0; i < length; i++) {
+            if (this.indexOf(secondArray[i]) != -1) {
+                intersectionArray.insert(secondArray[i]);
+            }
+        }
+        return intersectionArray;
     }
 
     @Override

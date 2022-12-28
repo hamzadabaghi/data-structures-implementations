@@ -11,8 +11,9 @@ public class Main {
         array.insert(15);
         array.insert(20);
         array.insert(17);
-        array.removeAt(4);
+        array.removeAt(1);
         System.out.println(array.size());
+        System.out.println(array.indexOf(17));
 
     }
 

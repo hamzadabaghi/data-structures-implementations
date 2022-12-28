@@ -44,8 +44,8 @@ public class Array {
     }
 
     public void removeAt(int index) {
-        if( index < 0 || index >= this.reelSize){
-            throw new IllegalArgumentException("The index should be greater than 0 and less then "+ this.reelSize);
+        if (index < 0 || index >= this.reelSize) {
+            throw new IllegalArgumentException("The index should be greater than 0 and less then " + this.reelSize);
         }
         for (int i = index; i < this.reelSize - 1; i++) {
             this.array[i] = this.array[i + 1];

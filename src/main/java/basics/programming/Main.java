@@ -2,6 +2,8 @@ package basics.programming;
 
 import basics.programming.arrays.Array;
 
+import basics.programming.linkedlists.LinkedList;
+
 public class Main {
     public static void main(String[] args) {
 
@@ -22,6 +24,10 @@ public class Main {
         System.out.println(array.intersect(intersectionArray,3));
         array.removeAt(1);
 
+        LinkedList<Integer> list = new LinkedList<>();
+        list.addFirst(5);
+        list.addFirst(7);
+        System.out.println(list);
     }
 
 }

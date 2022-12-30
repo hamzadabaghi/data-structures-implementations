@@ -4,6 +4,8 @@ import java.util.NoSuchElementException;
 
 public class LinkedList<T> {
 
+    private int size;
+
     private class Node<Q> {
 
         public Q value;
@@ -29,6 +31,7 @@ public class LinkedList<T> {
             newNode.next = this.first;
             this.first = newNode;
         }
+        this.size++;
     }
 
     public void addLast(T element) {
@@ -39,6 +42,7 @@ public class LinkedList<T> {
             this.last.next = newNode;
             this.last = newNode;
         }
+        this.size++;
     }
 
     @SuppressWarnings({"ConstantConditions"})
@@ -48,11 +52,13 @@ public class LinkedList<T> {
         }
         if (this.first == this.last) {
             this.first = this.last = null;
+            this.size = 0;
             return;
         }
         var second = this.first.next;
         first.next = null;
         this.first = second;
+        this.size--;
     }
 
     public void removeLast() {
@@ -61,10 +67,12 @@ public class LinkedList<T> {
         }
         if (this.first == this.last) {
             this.first = this.last = null;
+            this.size = 0;
             return;
         }
         this.last = this.getPrevious(this.last);
         this.last.next = null;
+        this.size--;
     }
 
     private Node<T> getPrevious(Node<T> givenNode) {
@@ -93,13 +101,7 @@ public class LinkedList<T> {
     }
 
     public int size() {
-        var current = this.first;
-        int i = 0;
-        while (current != null) {
-            i++;
-            current = current.next;
-        }
-        return i;
+        return this.size;
     }
 
     private boolean isEmpty() {
@@ -110,10 +112,22 @@ public class LinkedList<T> {
         return new Node<T>(element);
     }
 
+    @SuppressWarnings("unchecked")
+    public T[] toArray() {
+        var current = this.first;
+        T[] array = (T[]) new Object[this.size];
+        int index = 0;
+        while (current != null) {
+            array[index++] = current.value;
+            current = current.next;
+        }
+        return array;
+    }
+
     @Override
     @SuppressWarnings({"ConstantConditions"})
     public String toString() {
-        var output = new StringBuilder("[ ");
+        var output = new StringBuilder("[");
         var current = this.first;
         while (current != null) {
             output.append(current.value);
@@ -122,7 +136,7 @@ public class LinkedList<T> {
                 output.append(", ");
             }
         }
-        return output.append(" ]").toString();
+        return output.append("]").toString();
     }
 
 

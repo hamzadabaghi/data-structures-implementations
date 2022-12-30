@@ -51,49 +51,49 @@ public class LinkedList<T> {
 
     public void deleteLast() {
         if (!isEmpty()) {
-            var temp = this.first;
+            var current = this.first;
             if (this.first == this.last) {
                 this.first = this.last = null;
             } else {
-                while (temp.next.next != null) {
-                    temp = temp.next;
+                while (current.next.next != null) {
+                    current = current.next;
                 }
-                this.last = temp;
+                this.last = current;
                 this.last.next = null;
             }
         }
     }
 
     public boolean contains(T element) {
-        var temp = this.first;
-        while (temp != null) {
-            if (temp.value.equals(element)) {
+        var current = this.first;
+        while (current != null) {
+            if (current.value.equals(element)) {
                 return true;
             }
-            temp = temp.next;
+            current = current.next;
         }
         return false;
     }
 
     public int indexOf(T element) {
-        var temp = this.first;
+        var current = this.first;
         int i = 0;
-        while (temp != null) {
-            if (temp.value.equals(element)) {
+        while (current != null) {
+            if (current.value.equals(element)) {
                 return i;
             }
-            temp = temp.next;
+            current = current.next;
             i++;
         }
         return -1;
     }
 
     public int size() {
-        var temp = this.first;
+        var current = this.first;
         int i = 0;
-        while (temp != null) {
+        while (current != null) {
             i++;
-            temp = temp.next;
+            current = current.next;
         }
         return i;
     }
@@ -110,11 +110,11 @@ public class LinkedList<T> {
     @SuppressWarnings({"ConstantConditions"})
     public String toString() {
         var output = new StringBuilder("[ ");
-        var temp = this.first;
-        while (temp != null) {
-            output.append(temp.value);
-            temp = temp.next;
-            if (temp != null) {
+        var current = this.first;
+        while (current != null) {
+            output.append(current.value);
+            current = current.next;
+            if (current != null) {
                 output.append(", ");
             }
         }

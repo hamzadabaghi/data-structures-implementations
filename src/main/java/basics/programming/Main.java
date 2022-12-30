@@ -3,6 +3,8 @@ package basics.programming;
 import basics.programming.arrays.Array;
 import basics.programming.linkedlists.LinkedList;
 
+import java.util.Arrays;
+
 public class Main {
     public static void main(String[] args) {
 
@@ -30,11 +32,10 @@ public class Main {
         list.addLast(7);
         list.addLast(10);
         list.addLast(12);
-        list.addLast(2);
         System.out.println(list);
         System.out.println(list.contains(12) ? "YES" : "NO");
         System.out.println(list.indexOf(12));
-        System.out.println(list.size());
+        System.out.println(Arrays.toString(list.toArray()));
     }
 
 }

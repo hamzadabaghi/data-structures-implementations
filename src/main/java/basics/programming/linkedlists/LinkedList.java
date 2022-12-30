@@ -2,57 +2,47 @@ package basics.programming.linkedlists;
 
 public class LinkedList<T> {
 
+    private class Node<Q> {
+
+        public Q value;
+        public Node<Q> next;
+
+        public Node(Q value) {
+            this.value = value;
+        }
+
+    }
+
     private Node<T> first;
     private Node<T> last;
 
     public LinkedList() {
     }
 
-    public LinkedList(Node<T> first, Node<T> last) {
-        this.first = first;
-        this.last = last;
-    }
-
-    public Node<T> getFirst() {
-        return first;
-    }
-
-    public void setFirst(Node<T> first) {
-        this.first = first;
-    }
-
-    public Node<T> getLast() {
-        return last;
-    }
-
-    public void setLast(Node<T> last) {
-        this.last = last;
-    }
-
     public void addFirst(T element) {
-        var newNode = new Node<>(element, null);
-        if (this.first == null && this.last == null) {
+        var newNode = this.newNode(element);
+        if (isEmpty()) {
             this.first = this.last = newNode;
         } else {
-            newNode.setNext(this.first);
+            newNode.next = this.first;
             this.first = newNode;
         }
     }
 
     public void addLast(T element) {
-        var newNode = new Node<>(element, null);
-        if (this.first == null && this.last == null) {
+        var newNode = this.newNode(element);
+        if (isEmpty()) {
             this.first = this.last = newNode;
         } else {
-            this.last.setNext(newNode);
+            this.last.next = newNode;
             this.last = newNode;
         }
     }
 
     @SuppressWarnings({"ConstantConditions"})
     public void deleteFirst() {
-        if (this.first != null && this.last != null) {
-            this.first = this.first.getNext();
+        if (isEmpty()) {
+            this.first = this.first.next;
             if (this.first == null) {
                 this.last = null;
             }
@@ -60,16 +50,16 @@ public class LinkedList<T> {
     }
 
     public void deleteLast() {
-        if (this.first != null && this.last != null) {
+        if (!isEmpty()) {
             var temp = this.first;
             if (this.first == this.last) {
                 this.first = this.last = null;
             } else {
-                while (temp.getNext().getNext() != null) {
-                    temp = temp.getNext();
+                while (temp.next.next != null) {
+                    temp = temp.next;
                 }
                 this.last = temp;
-                this.last.setNext(null);
+                this.last.next = null;
             }
         }
     }
@@ -77,10 +67,10 @@ public class LinkedList<T> {
     public boolean contains(T element) {
         var temp = this.first;
         while (temp != null) {
-            if (temp.getValue().equals(element)) {
+            if (temp.value.equals(element)) {
                 return true;
             }
-            temp = temp.getNext();
+            temp = temp.next;
         }
         return false;
     }
@@ -89,10 +79,10 @@ public class LinkedList<T> {
         var temp = this.first;
         int i = 0;
         while (temp != null) {
-            if (temp.getValue().equals(element)) {
+            if (temp.value.equals(element)) {
                 return i;
             }
-            temp = temp.getNext();
+            temp = temp.next;
             i++;
         }
         return -1;
@@ -103,18 +93,27 @@ public class LinkedList<T> {
         int i = 0;
         while (temp != null) {
             i++;
-            temp = temp.getNext();
+            temp = temp.next;
         }
         return i;
     }
 
+    private boolean isEmpty() {
+        return this.first == null;
+    }
+
+    private Node<T> newNode(T element) {
+        return new Node<T>(element);
+    }
+
     @Override
+    @SuppressWarnings({"ConstantConditions"})
     public String toString() {
         var output = new StringBuilder("[ ");
         var temp = this.first;
         while (temp != null) {
-            output.append(temp.getValue());
-            temp = temp.getNext();
+            output.append(temp.value);
+            temp = temp.next;
             if (temp != null) {
                 output.append(", ");
             }

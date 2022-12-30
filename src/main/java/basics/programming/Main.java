@@ -9,7 +9,9 @@ public class Main {
         list.addLast(7);
         list.addLast(10);
         list.addLast(12);
-        list.addLast(2);
+        list.removeLast();
+        list.removeLast();
+        list.removeLast();
         System.out.println(list);
         System.out.println(list.contains(12) ? "YES" : "NO");
         System.out.println(list.indexOf(12));

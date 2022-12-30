@@ -1,5 +1,7 @@
 package basics.programming.linkedlists;
 
+import java.util.NoSuchElementException;
+
 public class LinkedList<T> {
 
     private class Node<Q> {
@@ -40,39 +42,41 @@ public class LinkedList<T> {
     }
 
     @SuppressWarnings({"ConstantConditions"})
-    public void deleteFirst() {
+    public void removeFirst() {
         if (isEmpty()) {
-            this.first = this.first.next;
-            if (this.first == null) {
-                this.last = null;
-            }
+            throw new NoSuchElementException();
         }
+        if (this.first == this.last) {
+            this.first = this.last = null;
+            return;
+        }
+        var second = this.first.next;
+        first.next = null;
+        this.first = second;
     }
 
-    public void deleteLast() {
-        if (!isEmpty()) {
-            var current = this.first;
-            if (this.first == this.last) {
-                this.first = this.last = null;
-            } else {
-                while (current.next.next != null) {
-                    current = current.next;
-                }
-                this.last = current;
-                this.last.next = null;
-            }
+    public void removeLast() {
+        if (isEmpty()) {
+            throw new NoSuchElementException();
         }
+        if (this.first == this.last) {
+            this.first = this.last = null;
+            return;
+        }
+        this.last = this.getPrevious(this.last);
+        this.last.next = null;
+    }
+
+    private Node<T> getPrevious(Node<T> givenNode) {
+        var current = this.first;
+        while (current.next != givenNode) {
+            current = current.next;
+        }
+        return current;
     }
 
     public boolean contains(T element) {
-        var current = this.first;
-        while (current != null) {
-            if (current.value.equals(element)) {
-                return true;
-            }
-            current = current.next;
-        }
-        return false;
+        return this.indexOf(element) != -1;
     }
 
     public int indexOf(T element) {

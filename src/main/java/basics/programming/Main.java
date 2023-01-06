@@ -12,8 +12,7 @@ public class Main {
         list.addLast(10);
         list.addLast(12);
         System.out.println(list);
-        System.out.println(list.contains(12) ? "YES" : "NO");
-        System.out.println(list.indexOf(12));
-        System.out.println(Arrays.toString(list.toArray()));
+        list.reverse(); // expected : [12, 10, 7, 5]
+        System.out.println(list);
     }
 }

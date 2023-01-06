@@ -61,18 +61,22 @@ public class LinkedList<T> {
         this.size--;
     }
 
-    public void removeLast() {
+    public Node<T> removeLast() {
+        Node<T> last;
         if (isEmpty()) {
             throw new NoSuchElementException();
         }
         if (this.first == this.last) {
+            last =  this.last;
             this.first = this.last = null;
             this.size = 0;
-            return;
+        } else {
+            last = this.last;
+            this.last = this.getPrevious(this.last);
+            this.last.next = null;
+            this.size--;
         }
-        this.last = this.getPrevious(this.last);
-        this.last.next = null;
-        this.size--;
+        return last;
     }
 
     private Node<T> getPrevious(Node<T> givenNode) {
@@ -122,6 +126,20 @@ public class LinkedList<T> {
             current = current.next;
         }
         return array;
+    }
+
+    public void reverse() {
+        if (!isEmpty()) {
+            var length = this.size();
+            LinkedList<T> newList = new LinkedList<>();
+            while(length-- != 0) {
+                var last = this.removeLast();
+                newList.addLast(last.value);
+            }
+            this.first = newList.first;
+            this.last = newList.last;
+            this.size = newList.size;
+        }
     }
 
     @Override

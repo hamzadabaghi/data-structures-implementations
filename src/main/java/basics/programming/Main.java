@@ -40,6 +40,8 @@ public class Main {
         System.out.println(list.indexOf(12));
         System.out.println(Arrays.toString(list.toArray()));
 
+        /*--------------- Stacks ---------------*/
+
         Stack intStack = new Stack();
         intStack.push(9);
         intStack.push(19);

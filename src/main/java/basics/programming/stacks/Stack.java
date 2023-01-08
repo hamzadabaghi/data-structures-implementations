@@ -1,5 +1,6 @@
 package basics.programming.stacks;
 
+import java.util.Arrays;
 import java.util.NoSuchElementException;
 
 public class Stack {
@@ -10,43 +11,33 @@ public class Stack {
     private int[] stackArray = new int[MAX_SIZE];
 
     public int push(int element) {
+        if(this.realSize == MAX_SIZE) {
+            throw new StackOverflowError();
+        }
         return this.stackArray[realSize++] = element;
     }
 
     public int pop() {
-        int temp;
-        if (this.realSize <= 0) {
-            throw new NoSuchElementException();
-        } else {
-            temp = this.stackArray[realSize - 1];
-            this.realSize--;
+        if (this.realSize == 0) {
+            throw new IllegalStateException();
         }
-        return temp;
+        return this.stackArray[--realSize];
     }
 
     public int peek() {
-        if (this.realSize > 0) {
+        if (this.realSize != 0) {
             return this.stackArray[realSize - 1];
         }
-        throw new NoSuchElementException();
-
+        throw new IllegalStateException();
     }
 
     public boolean isEmpty() {
-        return this.realSize <= 0;
+        return this.realSize == 0;
     }
 
     @Override
     public String toString() {
-        if (this.realSize < 1) {
-            return "";
-        }
-        int i;
-        StringBuffer output = new StringBuffer("[");
-        for (i = 0; i < realSize - 1; i++) {
-            output.append(stackArray[i]).append(",");
-        }
-        output.append(stackArray[i] + "]");
-        return output.toString();
+        var content = Arrays.copyOfRange(stackArray, 0, realSize);
+        return Arrays.toString(content);
     }
 }

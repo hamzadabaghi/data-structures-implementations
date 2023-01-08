@@ -5,6 +5,9 @@ import basics.programming.linkedlists.LinkedList;
 
 import java.util.Arrays;
 
+
+import basics.programming.stacks.Stack;
+
 public class Main {
     public static void main(String[] args) {
 
@@ -36,6 +39,20 @@ public class Main {
         System.out.println(list.contains(12) ? "YES" : "NO");
         System.out.println(list.indexOf(12));
         System.out.println(Arrays.toString(list.toArray()));
+
+        Stack intStack = new Stack();
+        intStack.push(9);
+        intStack.push(19);
+        intStack.push(29);
+        intStack.push(39);
+        System.out.println(intStack);
+        System.out.println(intStack.pop());
+        System.out.println(intStack.pop());
+        System.out.println(intStack.pop());
+        System.out.println(intStack.pop());
+        System.out.println(intStack.isEmpty());
+        System.out.println(intStack);
+
     }
 
 }

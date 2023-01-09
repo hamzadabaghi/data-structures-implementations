@@ -53,6 +53,7 @@ public class Main {
         System.out.println(intStack.pop());
         System.out.println(intStack.pop());
         System.out.println(intStack.isEmpty());
+        System.out.println(intStack.peek());
         System.out.println(intStack);
 
     }

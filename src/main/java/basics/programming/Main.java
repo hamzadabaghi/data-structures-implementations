@@ -8,6 +8,8 @@ import java.util.Arrays;
 
 import basics.programming.stacks.Stack;
 
+import basics.programming.hashmaps.HashMap;
+
 public class Main {
     public static void main(String[] args) {
 
@@ -56,6 +58,13 @@ public class Main {
         System.out.println(intStack.peek());
         System.out.println(intStack);
 
+        /* ---------- Hashmaps ----------*/
+        HashMap map = new HashMap(5);
+        map.put(10,"hamza");
+        map.put(20,"soufiane");
+        map.put(30,"loubna");
+        map.remove(10);
+        System.out.println(map);
     }
 
 }

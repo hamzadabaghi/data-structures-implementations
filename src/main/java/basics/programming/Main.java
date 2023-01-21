@@ -8,7 +8,7 @@ public class Main {
         HashMap map = new HashMap(5);
         map.put(10,"hamza");
         map.put(20,"soufiane");
-        map.put(10,"loubna");
-
+        map.put(20,"loubna");
+        System.out.println(map);
     }
 }

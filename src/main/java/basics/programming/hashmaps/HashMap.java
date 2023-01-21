@@ -46,6 +46,31 @@ public class HashMap {
         tab[index].addLast(new Entry(key, value));
     }
 
+    public String get(int key) {
+        LinkedList<Entry> bucket = getBucket(key);
+        if (bucket != null) {
+            for (var element : bucket) {
+                if (element.key == key) {
+                    return element.value;
+                }
+            }
+        }
+        return null;
+    }
+
+    public void remove(int key) {
+        LinkedList<Entry> bucket = getBucket(key);
+        if (bucket != null) {
+            bucket.removeIf(element -> element.key == key);
+        }
+    }
+
+    private LinkedList<Entry> getBucket(int key) {
+        int index = hasKey(key);
+        var bucket = tab[index];
+        return bucket;
+    }
+
     private int hasKey(int key) {
         return Math.abs(Integer.hashCode(key)) % this.capacity;
     }

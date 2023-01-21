@@ -8,7 +8,8 @@ public class Main {
         HashMap map = new HashMap(5);
         map.put(10,"hamza");
         map.put(20,"soufiane");
-        map.put(20,"loubna");
+        map.put(30,"loubna");
+        map.remove(10);
         System.out.println(map);
     }
 }

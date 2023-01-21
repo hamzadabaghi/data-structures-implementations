@@ -31,7 +31,6 @@ public class Main {
         array.removeAt(1);
 
         /*--------------- LinkedLists ---------------*/
-
         LinkedList<Integer> list = new LinkedList<>();
         list.addLast(5);
         list.addLast(7);
@@ -43,7 +42,6 @@ public class Main {
         System.out.println(Arrays.toString(list.toArray()));
 
         /*--------------- Stacks ---------------*/
-
         Stack intStack = new Stack();
         intStack.push(9);
         intStack.push(19);
@@ -58,11 +56,11 @@ public class Main {
         System.out.println(intStack.peek());
         System.out.println(intStack);
 
-        /* ---------- Hashmaps ----------*/
+        /*-------------- Hashmaps --------------*/
         HashMap map = new HashMap(5);
-        map.put(10,"hamza");
-        map.put(20,"soufiane");
-        map.put(30,"loubna");
+        map.put(10,"hi");
+        map.put(20,"hello");
+        map.put(30,"good");
         map.remove(10);
         System.out.println(map);
     }

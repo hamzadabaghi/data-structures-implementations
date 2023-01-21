@@ -16,12 +16,6 @@ import java.util.Queue;
 
 public class Main {
     public static void main(String[] args) {
-        ArrayQueue queue = new ArrayQueue(10);
-        queue.enqueue(5);
-        queue.enqueue(10);
-        queue.enqueue(15);
-        System.out.println( queue.dequeue());
-        System.out.println( queue);
 
         /*--------------- Arrays ---------------*/
         Array<Integer> array = new Array<Integer>();
@@ -73,6 +67,14 @@ public class Main {
         map.put(30,"good");
         map.remove(10);
         System.out.println(map);
+
+        /*-------------- Queues --------------*/
+        ArrayQueue queue = new ArrayQueue(10);
+        queue.enqueue(5);
+        queue.enqueue(10);
+        queue.enqueue(15);
+        System.out.println( queue.dequeue());
+        System.out.println( queue);
     }
 
 }

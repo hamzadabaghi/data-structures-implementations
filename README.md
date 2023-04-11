@@ -1,1 +1,1 @@
-# implementation of some data structres in java.
+# implementation of some data structures in java.
